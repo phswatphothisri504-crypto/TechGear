@@ -131,28 +131,12 @@ app.post('/api/register', async (req, res) => {
 // [LOGIN] เข้าสู่ระบบ
 app.post('/api/login', async (req, res) => {
     try {
-        let { email, password } = req.body;
-        
-        // ปรับเปลี่ยนชื่อย่อเพื่อให้สะดวกในการล็อกอินทดสอบระบบในเครื่องส่วนตัว
-        if (email === 'admin') {
-            email = 'admin@example.com';
-        } else if (email === 'user') {
-            email = 'user@example.com';
-        }
+        const { email, password } = req.body;
 
         const connection = await mysql.createConnection(dbConfig);
         
-        // ใช้รหัสผ่านแบบง่ายสำหรับการเปิดการทดสอบภายในท้องถิ่น (Local Testing)
-        let query = 'SELECT * FROM users WHERE email = ? AND password = ?';
-        let queryParams = [email, password];
-        
-        if (email === 'admin@example.com' && (password === 'admin' || password === 'admin123')) {
-            query = 'SELECT * FROM users WHERE email = ? AND (password = ? OR password = ?)';
-            queryParams = [email, 'admin123', 'admin'];
-        } else if (email === 'user@example.com' && (password === 'password' || password === 'password123')) {
-            query = 'SELECT * FROM users WHERE email = ? AND (password = ? OR password = ?)';
-            queryParams = [email, 'password123', 'password'];
-        }
+        const query = 'SELECT * FROM users WHERE email = ? AND password = ?';
+        const queryParams = [email, password];
 
         const [users] = await connection.query(query, queryParams);
         await connection.end();
