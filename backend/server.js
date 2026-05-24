@@ -1,4 +1,4 @@
-แแ// 1. นำเข้าโมดูลที่จำเป็นสำหรับการทำงานหลังบ้าน
+// 1. นำเข้าโมดูลที่จำเป็นสำหรับการทำงานหลังบ้าน
 require('dotenv').config();
 const express = require('express'); // Express Framework สำหรับสร้าง API endpoints และจัดการ Routing
 const cors = require('cors');       // CORS Middleware สำหรับอนุญาตให้หน้าบ้านต่างพอร์ต (เช่น Vue running on port 8080) เชื่อมต่อ API ได้
