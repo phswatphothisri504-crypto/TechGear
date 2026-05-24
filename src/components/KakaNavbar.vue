@@ -577,7 +577,7 @@ const getProductIcon = (name = '') => {
   background-color: #f1f3f5;
   border: 1px solid transparent;
   border-radius: 50px;
-  padding: 0.55rem 1.5rem 0.55rem 1.5rem;
+  padding: 0.55rem 2.8rem 0.55rem 1.25rem;
   font-size: 0.9rem;
   color: #1e293b;
   width: 100%;
@@ -830,7 +830,7 @@ const getProductIcon = (name = '') => {
   background-color: #f1f3f5;
   border: none;
   border-radius: 50px;
-  padding: 0.55rem 1.25rem;
+  padding: 0.55rem 2.8rem 0.55rem 1.25rem;
   font-size: 0.9rem;
 }
 .btn-primary-custom {
