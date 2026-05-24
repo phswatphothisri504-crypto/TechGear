@@ -104,10 +104,7 @@
             </transition>
           </div>
 
-          <!-- Dark Mode Toggle -->
-          <button class="icon-btn-circle" @click="toggleTheme" aria-label="Toggle Dark/Light Mode" title="สลับโหมดมืด/สว่าง">
-            <i :class="isDarkMode ? 'bi bi-moon-fill' : 'bi bi-sun-fill'"></i>
-          </button>
+
 
           <!-- User Menu (Login / Profile) -->
           <div class="position-relative user-dropdown-wrapper" @mouseenter="showUserMenu = true" @mouseleave="showUserMenu = false">
@@ -287,13 +284,6 @@
             </div>
           </div>
 
-          <!-- Mobile Dark Mode Toggle -->
-          <div class="py-2 border-bottom d-flex justify-content-between align-items-center" @click="toggleTheme" style="cursor: pointer;">
-            <span class="mobile-nav-link text-decoration-none text-dark m-0 pb-0 border-0">โหมดกลางคืน (Dark Mode)</span>
-            <div class="form-check form-switch mb-0">
-              <input class="form-check-input" type="checkbox" role="switch" :checked="isDarkMode" style="cursor: pointer;">
-            </div>
-          </div>
 
           <!-- Mobile Auth Links -->
           <div class="d-flex gap-2 mt-3">
@@ -331,8 +321,7 @@ const showCategories = ref(false)
 const showMobileMenu = ref(false)
 const showCartDropdown = ref(false)
 
-// สถานะโหมดมืด (Dark Mode)
-const isDarkMode = ref(false)
+
 
 // หาประเภทหมวดหมู่สินค้าที่มีการกรองใน URL เพื่อนำมาไฮไลท์ที่เมนู (Active Category)
 const activeCategory = computed(() => route.query.category || '')
@@ -373,20 +362,7 @@ const checkLoginStatus = () => {
   }
 }
 
-// ฟังก์ชันสลับโหมดมืด/สว่าง
-const toggleTheme = () => {
-  isDarkMode.value = !isDarkMode.value
-  const theme = isDarkMode.value ? 'dark' : 'light'
-  document.documentElement.setAttribute('data-bs-theme', theme)
-  localStorage.setItem('theme', theme)
-}
 
-// โหลด Theme เริ่มต้นจาก LocalStorage
-const initTheme = () => {
-  const savedTheme = localStorage.getItem('theme') || 'light'
-  isDarkMode.value = savedTheme === 'dark'
-  document.documentElement.setAttribute('data-bs-theme', savedTheme)
-}
 
 // ส่งสัญญาณค้นหาไปยังคอมโพเนนต์อื่น ๆ เมื่อพิมพ์ในแถบค้นหา
 const onSearchInput = () => {
@@ -463,7 +439,7 @@ const onLogoutClickMobile = () => {
 // ตรวจจับ Event ต่าง ๆ ทันทีที่ Component นี้โหลดขึ้นจอเสร็จสิ้น (Lifecycle Hook: onMounted)
 onMounted(() => {
   checkLoginStatus()
-  initTheme() // โหลด Theme ที่ผู้ใช้เคยเลือกไว้
+
   // คอยฟัง Event เพื่ออัปเดตสเตตัสล็อกอินของตัวเว็บแบบเรียลไทม์
   window.addEventListener('auth-change', checkLoginStatus)
   window.addEventListener('reset-navbar-search', handleResetNavbarSearch)
