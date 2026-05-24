@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  # กล่องเก็บฐานข้อมูล MySQL
+  my-db-server:
+    image: mysql:8.0
+    container_name: mcru_mysql_container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: store_db
+    ports:
+      - "3306:3306"
+
+  # กล่องโปรแกรม phpMyAdmin สำหรับเข้าไปหน้าตาเว็บจัดการฐานข้อมูล
+  my-phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: mcru_pma_container
+    restart: always
+    environment:
+      PMA_HOST: my-db-server
+    ports:
+      - "8081:80"

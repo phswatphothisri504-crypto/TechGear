@@ -1,0 +1,51 @@
+
+> talay@0.1.0 build
+> vue-cli-service build
+
+All browser targets in the browserslist configuration have supported ES module.
+Therefore we don't build two separate bundles for differential loading.
+
+
+-  Building for production...
+ WARNING  Compiled with 3 warnings11:34:36 PM
+
+ warning  
+
+asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
+This can impact web performance.
+Assets: 
+  img/bg_premium.0f8bd0af.png (663 KiB)
+  js/app.b1a50bb8.js (262 KiB)
+  js/chunk-vendors.ecdcd9cc.js (282 KiB)
+  img/bg_premium.png (663 KiB)
+
+ warning  
+
+entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
+Entrypoints:
+  app (882 KiB)
+      css/chunk-vendors.bd40d1d7.css
+      js/chunk-vendors.ecdcd9cc.js
+      css/app.2077de16.css
+      js/app.b1a50bb8.js
+
+
+ warning  
+
+webpack performance recommendations: 
+You can limit the size of your bundles by using import() or require.ensure to lazy load some parts of your application.
+For more info visit https://webpack.js.org/guides/code-splitting/
+
+  File                                   Size              Gzipped
+
+  dist\js\chunk-vendors.ecdcd9cc.js      281.92 KiB        95.01 KiB
+  dist\js\app.b1a50bb8.js                262.38 KiB        55.54 KiB
+  dist\css\chunk-vendors.bd40d1d7.css    221.54 KiB        29.86 KiB
+  dist\css\app.2077de16.css              115.72 KiB        15.99 KiB
+
+  Images and other types of assets omitted.
+  Build at: 2026-05-19T16:34:36.318Z - Hash: 5e54c5af2ad6fca0 - Time: 16228ms
+
+ DONE  Build complete. The dist directory is ready to be deployed.
+ INFO  Check out deployment instructions at https://cli.vuejs.org/guide/deployment.html
+       
